@@ -7,19 +7,21 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
-import { ContactPageModule } from '../contact/contact.module';
-import { AboutPageModule } from '../about/about.module';
-import { HomePageModule } from '../home/home.module';
+import { AboutPageModule } from '../../main/about/about.module';
+import { ContactPageModule } from '../../main/contact/contact.module';
+import { CardPageModule } from '../../main/card/card.module';
+
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
+    RouterModule,
     TabsPageRoutingModule,
-    HomePageModule,
     AboutPageModule,
-    ContactPageModule
+    ContactPageModule,
+    CardPageModule
   ],
   declarations: [TabsPage]
 })
