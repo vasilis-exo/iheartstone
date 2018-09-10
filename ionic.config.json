@@ -1,0 +1,7 @@
+{
+  "name": "heartStone",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
