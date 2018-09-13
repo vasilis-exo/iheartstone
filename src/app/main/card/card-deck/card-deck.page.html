@@ -1,11 +1,26 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>
-        Card-deck
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-title class="test2">
+      Card Decks
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content padding>
-  <h2>Card Deck Page</h2>
+<ion-content padding class="test">
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Classes</ion-label>
+    </ion-list-header>
+
+    {{cardDecks | json}}
+
+    <!-- <ion-item *ngFor="let cardDeck of cardDecks"> 
+      <ion-avatar slot="start">
+        <img src="/docs/assets/img/avatar-finn.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{cardDeck}}</h2>
+      </ion-label>
+    </ion-item> -->
+  </ion-list>
 </ion-content>
