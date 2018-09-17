@@ -7,20 +7,9 @@
 </ion-header>
 
 <ion-content padding class="test">
-  <ion-list>
-    <ion-list-header>
-      <ion-label>Classes</ion-label>
-    </ion-list-header>
-
-    {{cardDecks | json}}
-
-    <!-- <ion-item *ngFor="let cardDeck of cardDecks"> 
-      <ion-avatar slot="start">
-        <img src="/docs/assets/img/avatar-finn.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>{{cardDeck}}</h2>
-      </ion-label>
-    </ion-item> -->
-  </ion-list>
+  <app-card-list *ngFor="let cardDeck of cardDecks" 
+    [items]="cardDeck.types" 
+    [listName]="cardDeck.name"
+    [navigateTo]="generateUrl">
+  </app-card-list>
 </ion-content>

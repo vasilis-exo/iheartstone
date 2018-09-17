@@ -2,16 +2,13 @@
 import { Injectable } from '@angular/core';
 
 // @angular/common/http
-import { HttpResponse, HttpHeaders,  } from '@angular/common/http';
+import { HttpResponse, HttpHeaders, } from '@angular/common/http';
 
 // rxjs/Observable
 import { Observable } from 'rxjs';
 
-// @angular/router
-import { Router } from '@angular/router';
-
 // Environment
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 // // ngx-logger
 import { NGXLogger } from 'ngx-logger';
@@ -20,21 +17,18 @@ import { NGXLogger } from 'ngx-logger';
 export class ApiHelperService {
 
   constructor(
-    private _router: Router,
     private _logger: NGXLogger
   ) { }
 
-  public getUrl( endpoint: string ): string {
-    this._logger.log(`[ getUrl ] => ${environment.api.url}${endpoint}`);
+  public getUrl(endpoint: string): string {
+    this._logger.log(`[ getUrl ] => ${environment.api.url}/${endpoint}`);
     return `${environment.api.url}/${endpoint}`;
   }
 
   public createRequestOptionsEmpty(): any {
     return Object.assign(
       {},
-      {
-        headers: new HttpHeaders().set('X-Mashape-Key', `${environment.api.key}`)
-      },
+      {},
       {},
       {
         observe: 'response' // 'body' as HttpObserve
@@ -65,11 +59,11 @@ export class ApiHelperService {
   public handleResponse(res: Response, endpoint: string): any {
     this._logger.info('[ handleResponse ]');
 
-    if ( res ) {
+    if (res) {
       this._logger.log('Response exists.');
-      if ( res instanceof HttpResponse ) {
-        this._logger.log('Response is an \'HttpResponse\' instance.');
-        if ( $.inArray(res.status, [200]) >= 0 ) {
+      if (res instanceof HttpResponse) {
+        // this._logger.log('Response is an \'HttpResponse\' instance.');
+        if ($.inArray(res.status, [200]) >= 0) {
           this._logger.log(`Retrieved: ${res.status}`);
           return this._extract_response_data(res, endpoint);
         } else {
@@ -90,9 +84,8 @@ export class ApiHelperService {
     this._logger.info('[ _extract_response_data ]');
 
     const json_extracted_data = res.body;
-    console.log(json_extracted_data);
 
-    if ( json_extracted_data ) {
+    if (json_extracted_data) {
       return json_extracted_data;
     }
 
@@ -102,7 +95,7 @@ export class ApiHelperService {
 
   public handleError(error: Response): Observable<any> {
     this._logger.info('[ handleError ]');
-    this._logger.log(error);
+    this._logger.error(error);
     return Observable.throw(error || 'An unknown error occurred.');
   }
 
