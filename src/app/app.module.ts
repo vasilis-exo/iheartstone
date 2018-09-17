@@ -6,27 +6,30 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-// Components
-import { AppComponent } from './app.component';
-
 // @angular/common/http
 import {
   HTTP_INTERCEPTORS,
-  HttpClient,
   HttpClientModule
 } from '@angular/common/http';
+
+// Interceptors
+import { AppHttpInterceptor } from './interceptors/app.http-interceptor';
+
+// Components
+import { AppComponent } from './app.component';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
 
 // Services
-import { ApiHelperService } from './services/shared/api-helper.service';
+import { ApiHelperService } from './services/shared/helpers/api-helper.service';
 
 // ngx-logger
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
-// Environment
+// Environments
 import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,7 +50,11 @@ import { environment } from '../environments/environment';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ApiHelperService,
-
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppHttpInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
