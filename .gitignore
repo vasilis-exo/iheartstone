@@ -32,3 +32,10 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+# apks - key
+*.apk
+*.keystore
+
+#dist
+dist

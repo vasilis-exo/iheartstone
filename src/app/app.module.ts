@@ -23,6 +23,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Services
 import { ApiHelperService } from './services/shared/helpers/api-helper.service';
+import { LoaderService } from './services/shared/loader.service';
+import { ToastService } from './services/shared/toast.service';
+import { AlertService } from './services/shared/alert.service';
 
 // ngx-logger
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
@@ -30,10 +33,13 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 // Environments
 import { environment } from '../environments/environment';
 
-
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [
+    AppComponent
+  ],
+  entryComponents: [
+
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -50,6 +56,9 @@ import { environment } from '../environments/environment';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ApiHelperService,
+    LoaderService,
+    ToastService,
+    AlertService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptor,
