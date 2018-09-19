@@ -1,18 +1,39 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>{{cardDeckGroup}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-list *ngIf="cards.length > 0">
-        <ion-list-header>
-          <ion-label>{{cardDeckGroup}}</ion-label>
-        </ion-list-header>
-        <ion-item *ngFor="let card of cards">
-          <ion-label>
-            <h2>{{card.name}}</h2>
-          </ion-label>
-        </ion-item>
-      </ion-list>
+  <app-search *ngIf="copyOfCards.length > 0"
+    [items]="copyOfCards"
+    [filteredProperty]="'name'"
+    (searchCompletedEvent)="handleSearchCompletedEvent($event)">
+  </app-search>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content 
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list *ngIf="cards.length > 0">
+    <ion-card *ngFor="let card of cards">
+      <ion-card-header text-wrap>
+        <ion-card-subtitle>
+          {{card.cardSet}}
+        </ion-card-subtitle>
+        <ion-card-title>
+          {{card.name}}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div [innerHTML]="card?.text"></div>
+        <ion-button size="medium" expand="full" [href]="generateUrl(card.cardId)">
+          See Detail
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>
