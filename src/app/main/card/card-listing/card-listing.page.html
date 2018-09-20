@@ -11,8 +11,12 @@
   <app-search *ngIf="copyOfCards.length > 0"
     [items]="copyOfCards"
     [filteredProperty]="'name'"
-    (searchCompletedEvent)="handleSearchCompletedEvent($event)">
+    (searchCompletedEvent)="handleSearchCompletedEvent($event)"
+    (searchStartedEvent)="handleSearchStartedEvent($event)">
   </app-search>
+
+  <ion-spinner text-center *ngIf="isLoading"></ion-spinner>
+
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content 
       refreshingSpinner="circles">
@@ -23,6 +27,12 @@
       <ion-card-header text-wrap>
         <ion-card-subtitle>
           {{card.cardSet}}
+          <ion-icon 
+            name="flame" 
+            class="like-icon" 
+            (click)="favoriteCard(card)"
+            [ngClass]="card.favorite ? 'favorite' : 'normal'">
+          </ion-icon>
         </ion-card-subtitle>
         <ion-card-title>
           {{card.name}}

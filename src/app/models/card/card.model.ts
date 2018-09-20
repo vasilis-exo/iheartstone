@@ -20,4 +20,5 @@ export interface Card {
   type: string;
   flavor: string;
   health: string;
+  favorite: boolean;
 }

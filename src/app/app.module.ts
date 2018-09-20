@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
+import { IonicStorageModule } from '@ionic/storage';
 
 // Services
 import { ApiHelperService } from './services/shared/helpers/api-helper.service';
@@ -44,17 +45,20 @@ import { environment } from '../environments/environment';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
     AppRoutingModule,
     LoggerModule.forRoot({
       level: environment.production ? NgxLoggerLevel.OFF : NgxLoggerLevel.DEBUG,
       serverLogLevel: environment.production ? NgxLoggerLevel.OFF : NgxLoggerLevel.ERROR
     })
-
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
+    },
     ApiHelperService,
     LoaderService,
     ToastService,
