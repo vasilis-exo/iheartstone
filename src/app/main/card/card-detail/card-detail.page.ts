@@ -1,6 +1,7 @@
 
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Platform } from '@ionic/angular';
 
 // Models
 import { Card } from './../../../models/card/card.model';
@@ -19,12 +20,16 @@ import { ToastService } from '../../../services/shared/toast.service';
 })
 export class CardDetailPage {
 
+  // Back Button
+  @ViewChild('backButton') backButtonEl: ElementRef;
+
   private _cardId: string;
   public card: Card;
 
   /**
    * Constructor
    *
+   * @param {Platform} _platform
    * @param {ActivatedRoute} _route
    * @param {CardService} _cardService
    * @param {LoaderService} _loaderService
@@ -32,11 +37,12 @@ export class CardDetailPage {
    * @param {ToastService} _toastService
    */
   constructor(
+    private _platform: Platform,
     private _route: ActivatedRoute,
     private _cardService: CardService,
     private _loaderService: LoaderService,
     private _alertService: AlertService,
-    private _toastService: ToastService
+    private _toastService: ToastService,
   ) { }
 
   // -----------------------------------------------------------------------------------------------------
@@ -49,6 +55,9 @@ export class CardDetailPage {
       // Call _get_cards()
       this._get_card();
     }
+
+    // Register Back Button
+   this.register_back_button();
   }
 
   // -----------------------------------------------------------------------------------------------------
@@ -80,6 +89,12 @@ export class CardDetailPage {
         // Dismiss Loader
         this._loaderService.dismissLoading();
       });
+  }
+
+  private register_back_button() {
+    this._platform.backButton.subscribe(() => {
+      this.backButtonEl.nativeElement.click();
+    });
   }
 
 }
