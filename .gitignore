@@ -39,9 +39,6 @@ UserInterfaceState.xcuserstate
 
 #dist
 dist
-<<<<<<< HEAD
-=======
 
 # config files
-src/app/config/*
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
+src/app/config/*.config.ts

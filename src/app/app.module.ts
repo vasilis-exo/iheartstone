@@ -27,10 +27,7 @@ import { ApiHelperService } from './services/shared/helpers/api-helper.service';
 import { LoaderService } from './services/shared/loader.service';
 import { ToastService } from './services/shared/toast.service';
 import { AlertService } from './services/shared/alert.service';
-<<<<<<< HEAD
-=======
 import { FcmService } from './services/shared/fcm.service';
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
 
 // ngx-logger
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
@@ -38,8 +35,6 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 // Environments
 import { environment } from '../environments/environment';
 
-<<<<<<< HEAD
-=======
 // Firebase Modules
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -56,7 +51,6 @@ import { FirebaseConfig } from './config/firebase.config';
 //   messagingSenderId: ''
 // };
 
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
 @NgModule({
   declarations: [
     AppComponent
@@ -73,14 +67,10 @@ import { FirebaseConfig } from './config/firebase.config';
     LoggerModule.forRoot({
       level: environment.production ? NgxLoggerLevel.OFF : NgxLoggerLevel.DEBUG,
       serverLogLevel: environment.production ? NgxLoggerLevel.OFF : NgxLoggerLevel.ERROR
-<<<<<<< HEAD
-    })
-=======
     }),
     // Firebase Modules
     AngularFireModule.initializeApp(FirebaseConfig),
     AngularFirestoreModule
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
   ],
   providers: [
     StatusBar,
@@ -93,20 +83,13 @@ import { FirebaseConfig } from './config/firebase.config';
     LoaderService,
     ToastService,
     AlertService,
-<<<<<<< HEAD
-=======
     FcmService,
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptor,
       multi: true
-<<<<<<< HEAD
-    }
-=======
     },
     Firebase
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
   ],
   bootstrap: [AppComponent]
 })

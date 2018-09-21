@@ -1,11 +1,7 @@
 
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-<<<<<<< HEAD
-import { Platform } from '@ionic/angular';
-=======
 import { Platform, NavController } from '@ionic/angular';
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
 
 // Models
 import { Card } from './../../../models/card/card.model';
@@ -15,11 +11,7 @@ import { CardService } from './../../../services/card/card.service';
 import { LoaderService } from '../../../services/shared/loader.service';
 import { AlertService } from './../../../services/shared/alert.service';
 import { ToastService } from '../../../services/shared/toast.service';
-<<<<<<< HEAD
-
-=======
 import { Subscription } from 'rxjs';
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
 
 @Component({
   selector: 'app-card-detail',
@@ -29,18 +21,11 @@ import { Subscription } from 'rxjs';
 export class CardDetailPage {
 
   // Back Button
-<<<<<<< HEAD
-  @ViewChild('backButton') backButtonEl: ElementRef;
-
-  private _cardId: string;
-  public card: Card;
-=======
   // @ViewChild('backButton', { read: ElementRef }) backButtonEl: ElementRef;
 
   private _cardId: string;
   public card: Card;
   public backBtn: Subscription;
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
 
   /**
    * Constructor
@@ -51,10 +36,7 @@ export class CardDetailPage {
    * @param {LoaderService} _loaderService
    * @param {AlertService} _alertService
    * @param {ToastService} _toastService
-<<<<<<< HEAD
-=======
    * @param {NavController} _navCtrl
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
    */
   constructor(
     private _platform: Platform,
@@ -63,41 +45,28 @@ export class CardDetailPage {
     private _loaderService: LoaderService,
     private _alertService: AlertService,
     private _toastService: ToastService,
-<<<<<<< HEAD
-  ) { }
-=======
     private _navCtrl: NavController
   ) {
    }
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
 
   // -----------------------------------------------------------------------------------------------------
   // @ Ionic lifecycle hooks
   // -----------------------------------------------------------------------------------------------------
   ionViewWillEnter() {
-<<<<<<< HEAD
-=======
     // Subscribe BackBtn
     this.register_back_button();
 
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
     this._cardId = this._route.snapshot.paramMap.get('cardId');
 
     if (!this.card) {
       // Call _get_cards()
       this._get_card();
     }
-<<<<<<< HEAD
-
-    // Register Back Button
-   this.register_back_button();
-=======
   }
 
   ionViewDidLeave() {
     // Unsubscribe BackBtn
     this._unregister_back_button();
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
   }
 
   // -----------------------------------------------------------------------------------------------------
@@ -132,13 +101,6 @@ export class CardDetailPage {
   }
 
   private register_back_button() {
-<<<<<<< HEAD
-    this._platform.backButton.subscribe(() => {
-      this.backButtonEl.nativeElement.click();
-    });
-  }
-
-=======
     this.backBtn = this._platform.backButton.subscribe(() => {
       // this._location.back();
       this._navCtrl.goBack();
@@ -151,5 +113,4 @@ export class CardDetailPage {
     }
   }
 
->>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
 }
