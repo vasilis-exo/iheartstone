@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Ionic Pages
 import { TabsPage } from './tabs.page';
-import { AboutPage } from '../../main/about/about.page';
-import { ContactPage } from '../../main/contact/contact.page';
 import { CardDeckPage } from '../../main/card/card-deck/card-deck.page';
 import { CardListingPage } from '../../main/card/card-listing/card-listing.page';
 import { CardDetailPage } from '../../main/card/card-detail/card-detail.page';
@@ -19,11 +17,6 @@ const routes: Routes = [
         path: '',
         redirectTo: '/tabs/(card:card-deck)',
         pathMatch: 'full',
-      },
-      {
-        path: 'about',
-        outlet: 'about',
-        component: AboutPage
       },
       {
         path: 'favorite',

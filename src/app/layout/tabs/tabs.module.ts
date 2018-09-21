@@ -7,8 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
-import { AboutPageModule } from '../../main/about/about.module';
-import { ContactPageModule } from '../../main/contact/contact.module';
 import { CardPageModule } from '../../main/card/card.module';
 
 
@@ -19,8 +17,6 @@ import { CardPageModule } from '../../main/card/card.module';
     FormsModule,
     RouterModule,
     TabsPageRoutingModule,
-    AboutPageModule,
-    ContactPageModule,
     CardPageModule
   ],
   declarations: [TabsPage]
