@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+=======
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Platform, NavController } from '@ionic/angular';
+>>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
 
 // Model
 import { Card } from './../../../models/card/card.model';
@@ -29,22 +35,42 @@ export class CardListingPage {
   public isLoading = false;
   public favoriteCards: any = {};
   public favoriteCardSub: Subscription;
+<<<<<<< HEAD
 
   /**
    * Constructor
    *
+=======
+  public backBtn: Subscription;
+
+  /**
+   * Constructor
+   * @param {Platform} _platform
+>>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
    * @param {ActivatedRoute} _route
    * @param {CardService} _cardService
    * @param {LoaderService} _loaderService
    * @param {ToastService} _toastService
    * @param {FavoriteCardStore} _favoriteCardStore
+<<<<<<< HEAD
    */
   constructor(
+=======
+   * @param {Location} _location
+   */
+  constructor(
+    private _platform: Platform,
+>>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
     private _route: ActivatedRoute,
     private _cardService: CardService,
     private _loaderService: LoaderService,
     private _toastService: ToastService,
+<<<<<<< HEAD
     private _favoriteCardStore: FavoriteCardStore
+=======
+    private _favoriteCardStore: FavoriteCardStore,
+    private _navCtrl: NavController
+>>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
   ) {
     this._get_storage_favoriteCards();
   }
@@ -53,6 +79,12 @@ export class CardListingPage {
   // @ Ionic lifecycle hooks
   // -----------------------------------------------------------------------------------------------------
   ionViewWillEnter() {
+<<<<<<< HEAD
+=======
+    // Subscribe BackBtn
+    this.register_back_button();
+
+>>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
     this.cardDeckGroup = this._route.snapshot.paramMap.get('cardDeckGroup');
     this.cardDeck = this._route.snapshot.paramMap.get('cardDeck');
     this.refresher = false;
@@ -64,6 +96,12 @@ export class CardListingPage {
   }
 
   ionViewDidLeave() {
+<<<<<<< HEAD
+=======
+    // Unsubscribe BackBtn
+    this._unregister_back_button();
+
+>>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
     if (this.favoriteCardSub && !this.favoriteCardSub.closed) {
       this.favoriteCardSub.unsubscribe();
     }
@@ -122,6 +160,22 @@ export class CardListingPage {
     return (card ? true : false);
   }
 
+<<<<<<< HEAD
+=======
+  private register_back_button() {
+    this.backBtn = this._platform.backButton.subscribe(() => {
+      // this._location.back();
+      this._navCtrl.goBack();
+    });
+  }
+
+  private _unregister_back_button() {
+    if (this.backBtn && !this.backBtn.closed) {
+      this.backBtn.unsubscribe();
+    }
+  }
+
+>>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
   // -----------------------------------------------------------------------------------------------------
   // @ Public Functions
   // -----------------------------------------------------------------------------------------------------
@@ -132,12 +186,19 @@ export class CardListingPage {
   public doRefresh(event) {
     this.refresher = true;
     this._get_cards(this.refresher, event);
+<<<<<<< HEAD
     // event.target.complete();
 
     setTimeout(() => {
       console.log('Async operation has ended');
       event.target.complete();
     }, 5000);
+=======
+    // setTimeout(() => {
+    //   console.log('Async operation has ended');
+    //   event.target.complete();
+    // }, 1000);
+>>>>>>> 752bc6d269108ac650cc7d164b3df634f8bd415e
   }
 
   public handleSearchCompletedEvent(cards: Card[]) {
