@@ -15,10 +15,10 @@ export class ToastService {
   ) { }
 
 
-  public async presentToast() {
+  public async presentToast(message: string) {
     const toast = await this._ToastCtrl.create({
-      message: 'Your settings have been saved',
-      duration: 2000
+      message,
+      duration: 4000
     });
     toast.present();
   }

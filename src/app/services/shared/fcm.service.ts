@@ -35,7 +35,7 @@ export class FcmService {
     this._save_token(token);
   }
 
-  public subscribeToNotification() {
+  public onNotifications() {
     return this._firebase.onNotificationOpen();
   }
 

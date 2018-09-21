@@ -27,6 +27,7 @@ import { ApiHelperService } from './services/shared/helpers/api-helper.service';
 import { LoaderService } from './services/shared/loader.service';
 import { ToastService } from './services/shared/toast.service';
 import { AlertService } from './services/shared/alert.service';
+import { FcmService } from './services/shared/fcm.service';
 
 // ngx-logger
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
@@ -72,6 +73,7 @@ import { FirebaseConfig } from './config/firebase.config';
     LoaderService,
     ToastService,
     AlertService,
+    FcmService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptor,
