@@ -1,7 +1,7 @@
 
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 
 // Models
 import { Card } from './../../../models/card/card.model';
@@ -11,7 +11,7 @@ import { CardService } from './../../../services/card/card.service';
 import { LoaderService } from '../../../services/shared/loader.service';
 import { AlertService } from './../../../services/shared/alert.service';
 import { ToastService } from '../../../services/shared/toast.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-card-detail',
@@ -21,10 +21,11 @@ import { ToastService } from '../../../services/shared/toast.service';
 export class CardDetailPage {
 
   // Back Button
-  @ViewChild('backButton') backButtonEl: ElementRef;
+  // @ViewChild('backButton', { read: ElementRef }) backButtonEl: ElementRef;
 
   private _cardId: string;
   public card: Card;
+  public backBtn: Subscription;
 
   /**
    * Constructor
@@ -35,6 +36,7 @@ export class CardDetailPage {
    * @param {LoaderService} _loaderService
    * @param {AlertService} _alertService
    * @param {ToastService} _toastService
+   * @param {NavController} _navCtrl
    */
   constructor(
     private _platform: Platform,
@@ -43,21 +45,28 @@ export class CardDetailPage {
     private _loaderService: LoaderService,
     private _alertService: AlertService,
     private _toastService: ToastService,
-  ) { }
+    private _navCtrl: NavController
+  ) {
+   }
 
   // -----------------------------------------------------------------------------------------------------
   // @ Ionic lifecycle hooks
   // -----------------------------------------------------------------------------------------------------
   ionViewWillEnter() {
+    // Subscribe BackBtn
+    this.register_back_button();
+
     this._cardId = this._route.snapshot.paramMap.get('cardId');
 
     if (!this.card) {
       // Call _get_cards()
       this._get_card();
     }
+  }
 
-    // Register Back Button
-   this.register_back_button();
+  ionViewDidLeave() {
+    // Unsubscribe BackBtn
+    this._unregister_back_button();
   }
 
   // -----------------------------------------------------------------------------------------------------
@@ -92,9 +101,16 @@ export class CardDetailPage {
   }
 
   private register_back_button() {
-    this._platform.backButton.subscribe(() => {
-      this.backButtonEl.nativeElement.click();
+    this.backBtn = this._platform.backButton.subscribe(() => {
+      // this._location.back();
+      this._navCtrl.goBack();
     });
+  }
+
+  private _unregister_back_button() {
+    if (this.backBtn && !this.backBtn.closed) {
+      this.backBtn.unsubscribe();
+    }
   }
 
 }

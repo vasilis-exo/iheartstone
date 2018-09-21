@@ -34,6 +34,12 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 // Environments
 import { environment } from '../environments/environment';
 
+// Firebase Modules
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { Firebase } from '@ionic-native/firebase/ngx';
+import { FirebaseConfig } from './config/firebase.config';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -50,7 +56,10 @@ import { environment } from '../environments/environment';
     LoggerModule.forRoot({
       level: environment.production ? NgxLoggerLevel.OFF : NgxLoggerLevel.DEBUG,
       serverLogLevel: environment.production ? NgxLoggerLevel.OFF : NgxLoggerLevel.ERROR
-    })
+    }),
+    // Firebase Modules
+    AngularFireModule.initializeApp(FirebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [
     StatusBar,
@@ -67,7 +76,8 @@ import { environment } from '../environments/environment';
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptor,
       multi: true
-    }
+    },
+    Firebase
   ],
   bootstrap: [AppComponent]
 })
