@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:23886778492:android:c72c7d414fc76f89",
+        "mobilesdk_app_id": "1:23886778492:android:e83869f9044c3f44",
         "android_client_info": {
-          "package_name": "com.exo.heartstone"
+          "package_name": "com.exo.heartstonelib"
         }
       },
       "oauth_client": [

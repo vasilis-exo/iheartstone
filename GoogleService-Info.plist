@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>23886778492-859ginodfpotk98q8sv3lg63rommh0c4.apps.googleusercontent.com</string>
+	<string>23886778492-l43g5pmmf3hk4534ht5jp7r6a8rto58c.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.23886778492-859ginodfpotk98q8sv3lg63rommh0c4</string>
+	<string>com.googleusercontent.apps.23886778492-l43g5pmmf3hk4534ht5jp7r6a8rto58c</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBT355q2DOO-lGX2dLKoT-KjaY1u-aQsA0</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.exo.heartstone</string>
+	<string>com.exo.heartstonelib</string>
 	<key>PROJECT_ID</key>
 	<string>heartstonelib-exo</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:23886778492:ios:c72c7d414fc76f89</string>
+	<string>1:23886778492:ios:e83869f9044c3f44</string>
 	<key>DATABASE_URL</key>
 	<string>https://heartstonelib-exo.firebaseio.com</string>
 </dict>
