@@ -41,7 +41,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { FirebaseConfig } from './config/firebase.config';
 
-// Firebase Config Example
+// Firebase Config Code
 // export const FirebaseConfig = {
 //   apiKey: '',
 //   authDomain: '',
