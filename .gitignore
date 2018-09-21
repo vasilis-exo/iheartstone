@@ -39,3 +39,6 @@ UserInterfaceState.xcuserstate
 
 #dist
 dist
+
+# config files
+src/app/config/*
