@@ -79,9 +79,9 @@ export class CardDetailPage {
   // -----------------------------------------------------------------------------------------------------
   // @ Private Functions
   // -----------------------------------------------------------------------------------------------------
-  private _get_card() {
+  private async _get_card() {
     // Show Loader
-    this._loaderService.presentLoading();
+    await this._loaderService.presentLoading();
 
     this._cardService.getCardsById$(this._cardId)
       .subscribe((data) => {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 // Services
 import { CardService } from '../../../services/card/card.service';
@@ -14,7 +14,7 @@ import * as $ from 'jquery';
   templateUrl: './card-deck.page.html',
   styleUrls: ['./card-deck.page.scss'],
 })
-export class CardDeckPage implements OnInit {
+export class CardDeckPage {
 
   private readonly ALLOWED_DECKS = [
     'classes',
@@ -37,9 +37,9 @@ export class CardDeckPage implements OnInit {
   ) { }
 
   // -----------------------------------------------------------------------------------------------------
-  // @ Lifecycle hooks
+  // @ Ionic lifecycle hooks
   // -----------------------------------------------------------------------------------------------------
-  ngOnInit() {
+  ionViewWillEnter() {
     this.getCardDecks();
   }
 

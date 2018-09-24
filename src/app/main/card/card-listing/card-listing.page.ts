@@ -31,6 +31,7 @@ export class CardListingPage {
   public favoriteCards: any = {};
   public favoriteCardSub: Subscription;
   public backBtn: Subscription;
+  public limit = 20;
 
   /**
    * Constructor
@@ -83,11 +84,11 @@ export class CardListingPage {
   // -----------------------------------------------------------------------------------------------------
   // @ Private Functions
   // -----------------------------------------------------------------------------------------------------
-  private _get_cards(refresher: boolean, event?: any) {
+  private async _get_cards(refresher: boolean, event?: any) {
 
     // Show Loader
     if (!refresher) {
-      this._loaderService.presentLoading();
+      await this._loaderService.presentLoading();
     }
 
     this._cardService.getCardsByDeck$(this.cardDeckGroup, this.cardDeck)
@@ -173,6 +174,13 @@ export class CardListingPage {
 
   public favoriteCard(card: Card) {
     this._favoriteCardStore.toggleCard(card);
+  }
+
+  public loadData(infiniteScroll) {
+    setTimeout( () => {
+      this.limit += 20;
+      infiniteScroll.target.complete();
+    }, 200);
   }
 
 }
