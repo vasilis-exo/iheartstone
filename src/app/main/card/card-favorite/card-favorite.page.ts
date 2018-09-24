@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { FavoriteCardStore } from './../../../services/storage/card-favorite.store';
 
@@ -20,6 +20,8 @@ export class CardFavoritePage {
 
   public favoriteCardSub: Subscription;
   public favoriteCardList: Card[];
+  // ViewChild Elements
+  @ViewChild('itemSliding') itemSlidingEl;
 
   /**
    * Constructor
@@ -59,4 +61,11 @@ export class CardFavoritePage {
   public generateUrl(cardId: string): string {
     return `/tabs/(card:card/${cardId})`;
   }
+
+  public removeFavoriteCard(favoriteCard: Card, event: Event) {
+    event.stopPropagation();
+    this._favoriteCardStore.toggleCard(favoriteCard);
+    this.itemSlidingEl.closeOpened();
+  }
+
 }
