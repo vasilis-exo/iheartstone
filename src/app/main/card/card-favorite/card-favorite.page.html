@@ -8,11 +8,9 @@
   <ion-list>
     <ion-item-sliding #itemSliding *ngFor="let favoriteCard of favoriteCardList" class="favorite-item-sliding">
       <ion-item [href]="generateUrl(favoriteCard.cardId)">
-        <ion-item-divider>
           <ion-label>
             <h2>{{favoriteCard.name}}</h2>
           </ion-label>
-        </ion-item-divider>
       </ion-item>
       <ion-item-options side="end">
         <ion-item-option color="danger" (click)="removeFavoriteCard(favoriteCard, $event)">
