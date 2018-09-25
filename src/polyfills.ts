@@ -74,3 +74,7 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * Need to import at least one locale-data with intl.
  */
 // import 'intl/locale-data/jsonp/en';
+
+
+// Include web-animations-js
+import 'web-animations-js/web-animations.min';

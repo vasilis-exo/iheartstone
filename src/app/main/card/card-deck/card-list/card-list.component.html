@@ -1,4 +1,4 @@
-<ion-list *ngIf="items.length > 0">
+<ion-list *ngIf="items.length > 0" [@listAnimation]="items.length">
   <ion-list-header>
     <ion-label>{{listName}}</ion-label>
   </ion-list-header>
