@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-menu-toggle *ngFor="let page of appPages">
+      <ion-item 
+        [href]="page.url" 
+        [routerDirection]="'root'" 
+        [class.active]="checkActivePage(page)">
+          <ion-icon slot="start" [name]="page.icon" [color]="checkActivePage(page) ? 'primary' : ''"></ion-icon>
+          <ion-label>{{page.title}}</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+</ion-content>

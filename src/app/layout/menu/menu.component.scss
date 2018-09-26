@@ -1,0 +1,12 @@
+ion-content {
+    height: 100%;
+    --padding-start: var(--ion-padding, 0px);
+    --padding-end: var(--ion-padding, 0px);
+    --padding-top: var(--ion-padding, 16px);
+    --padding-bottom: var(--ion-padding, 16px);
+    padding: var(--ion-padding, 16px);
+}
+
+.active {
+    background:#eae9e9;
+}

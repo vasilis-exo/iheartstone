@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/tabs/(card:card-deck)',
+        redirectTo: '/tabs/(card:card)',
         pathMatch: 'full',
       },
       {

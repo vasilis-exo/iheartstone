@@ -18,6 +18,7 @@ import { AppHttpInterceptor } from './interceptors/app.http-interceptor';
 
 // Components
 import { AppComponent } from './app.component';
+import { MenuComponent } from './layout/menu/menu.component';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +43,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { FirebaseConfig } from './config/firebase.config';
 
+
 // Firebase Config Code
 // export const FirebaseConfig = {
 //   apiKey: '',
@@ -54,7 +56,8 @@ import { FirebaseConfig } from './config/firebase.config';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent
   ],
   entryComponents: [
 
