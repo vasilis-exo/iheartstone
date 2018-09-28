@@ -22,6 +22,7 @@ import { Card } from './../../../models/card/card.model';
 
 
 import { objectPropsToArray } from '../../../utils/json-parse.util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-favorite',
@@ -66,7 +67,8 @@ export class CardFavoritePage {
    * @param {FavoriteCardStore} _favoriteCardStore
    */
   constructor(
-    private _favoriteCardStore: FavoriteCardStore
+    private _favoriteCardStore: FavoriteCardStore,
+    private _router: Router
   ) {
     this._get_storage_favoriteCards();
   }
@@ -95,14 +97,29 @@ export class CardFavoritePage {
   // -----------------------------------------------------------------------------------------------------
   // @ Public Functions
   // -----------------------------------------------------------------------------------------------------
-  public generateUrl(cardId: string): string {
-    return `/tabs/(card:card/${cardId})`;
+  public generateUrl(cardId: string) {
+    this._router.navigateByUrl(`/tabs/(card:card/${cardId})`);
   }
 
   public removeFavoriteCard(favoriteCard: Card, event: Event) {
     event.stopPropagation();
     this._favoriteCardStore.toggleCard(favoriteCard);
     this.itemSlidingEl.closeOpened();
+  }
+
+  public forceDelete(favoriteCard: Card, event: any) {
+
+    const itemSlidingEl: HTMLIonItemSlidingElement = event.target;
+
+    itemSlidingEl.getSlidingRatio().then( (slidingRatio) => {
+      console.log(slidingRatio);
+
+      if (slidingRatio > 1) {
+        this._favoriteCardStore.toggleCard(favoriteCard);
+        this.itemSlidingEl.closeOpened();
+      }
+
+    });
   }
 
 }
